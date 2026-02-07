@@ -20,27 +20,7 @@
 
 ## 아키텍처
 
-┌───────────┐      WebSocket       ┌────────────┐
-│   Upbit   │ ─────────────────▶ │  Collector  │
-└───────────┘                     └─────┬──────┘
-│
-│ Write (Time-series)
-▼
-┌────────────┐
-│  InfluxDB  │
-└─────┬──────┘
-│ Query / Aggregate
-│
-┌──────────────┐          ▼
-│   Grafana    │ ◀──── 시각화
-└──────────────┘
-│
-│ Batch / Context
-▼
-┌────────────┐
-│  Analyzer  │
-│ (LocalAI)  │
-└────────────┘
+<img width="542" height="293" alt="image" src="https://github.com/user-attachments/assets/d03596c4-236f-49b4-b3ad-2a2e55bc4517" />
 
 ---
 
