@@ -1,0 +1,69 @@
+spring:
+  application:
+   name: TripleC
+  docker:
+    compose:
+      enabled: false
+
+management:
+  influx:
+    metrics:
+      export:
+        connect-timeout: 1s
+        read-timeout: 3s
+        batch-size: 10000
+  health:
+    influxdb:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, prometheus
+
+---
+# LOCAL
+
+spring:
+  config:
+    activate:
+      on-profile: local
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 5s
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 1
+          max-wait: -1ms
+
+logging:
+  level:
+    io.github.triplec.analyzer.service.TickerMeasurementDetectAnalyzer: DEBUG
+
+influx:
+  username: admin
+  password: admin123
+  url: http://localhost:8086
+  token: triplec-secret-token
+  org: triplec
+  bucket: triplec-bucket
+  logLevel: NONE
+  readTimeout: 5s
+  writeTimeout: 5s
+  connectTimeout: 5s
+
+management:
+  influx:
+    metrics:
+      export:
+        bucket: triplec-bucket
+        org: triplec
+        token: triplec-secret-token
+        uri: http://localhost:8086
+  endpoints:
+    web:
+      exposure:
+        include: "*"
