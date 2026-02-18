@@ -1,4 +1,4 @@
-# TripleC
+# TripleC (Cryptocurrency Climber Chat)
 
 > Upbit WebSocket 기반 실시간 가상화폐 데이터를 수집하고, InfluxDB + Grafana로 시각화하며 LocalAI를 활용해 시장 흐름을 분석하는 Spring Boot + Kotlin 프로젝트
 실시간 가상화폐 데이터 수집 · 시계열 저장 · 시각화 및 AI 기반 분석을 수행하는 개인 프로젝트입니다.
